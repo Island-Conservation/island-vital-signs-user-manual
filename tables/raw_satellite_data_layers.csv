@@ -1,0 +1,10 @@
+Category,Layer name,Tile set ID,Description
+Canopy Cover,RAW Tree Cover 2025 v2.3,islands_tcc_v2_3_2025,Describes the proportion of an area covered by tree canopy cover.
+Productivity,RAW Productivity (NDVI) 2025 v2.2,islands_ndvi_2025,Spectral index used for monitoring vegetation greenness and productivity. Values near 1 indicate dense green vegetation. Values near 0 indicate bare ground or sparse vegetation.
+Productivity,RAW Productivity (EVI) 2025 v2.2,islands_evi_2025,Modified version of NDVI that corrects for high biomass and moist atmospheric conditions. Best used on tropical islands with dense vegetative cover. Values near 1 indicate dense green vegetation. Values near 0 indicate bare ground or sparse vegetation.
+Productivity,RAW Productivity (MSAVI2) 2025 v2.2,islands_msavi2_2025,Modified version of NDVI that corrects for bare soil and rock. Best used on islands with sparse vegetation. Values near 1 indicate dense green vegetation. Values near 0 indicate bare ground or sparse vegetation.
+Moisture,RAW Canopy Moisture (NDMI) 2025 v2.2,islands_ndmi_2025,"Vegetation moisture content. Negative values often indicate bare ground. Values near 0 indicate sparse, dry or water-stressed vegetation. Values near 1 indicate dense canopy without water stress."
+Terrain,Elevation,islands_dem,Geographic height above sea level. Bare-earth elevation.
+Terrain,Slope,islands_slope,"Steepness of terrain, derived from elevation."
+Terrain,Aspect,islands_aspect,"Direction of a slope face, derived from elevation."
+Terrain,Topographic Wetness Index (TWI),islands_twi,"Measure of relative wetness/drainage potential derived from terrain, i.e., an estimate of where water will accumulate on the land based on shape of the terrain. Higher values typically signal valleys and floodplains. Lower values typically signal ridges and steep slopes."

@@ -1,0 +1,74 @@
+name: Publish book
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Needed by actions/deploy-pages to publish to GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          # Pull prebuilt Linux binaries from Posit Package Manager instead of
+          # compiling from source, which turns a ~30 min install into ~2 min.
+          use-public-rspm: true
+
+      - name: Cache R packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ hashFiles('.github/workflows/publish.yml') }}
+          restore-keys: ${{ runner.os }}-r-
+
+      - name: Install R packages
+        shell: Rscript {0}
+        run: |
+          pkgs <- c("bookdown", "rmarkdown", "knitr", "tidyverse", "kableExtra")
+          missing <- pkgs[!pkgs %in% rownames(installed.packages())]
+          if (length(missing)) install.packages(missing)
+
+      - name: Render book
+        shell: Rscript {0}
+        run: bookdown::render_book("index.Rmd")
+
+      - name: Check the book actually built
+        run: |
+          test -f docs/index.html || { echo "docs/index.html missing - render failed"; exit 1; }
+          touch docs/.nojekyll
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    # Only publish from main - PR runs stop after the build check above.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
