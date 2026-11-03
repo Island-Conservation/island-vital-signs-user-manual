@@ -1,3 +1,19 @@
-# Use Case Studies: Introduction
+# Use Case Studies
+
+Coming soon...
+
+## Validating vegetation conditions: Savana (VIR)
+
+Coming soon...
+
+## Monitoring vegetation growth: Lehua (USA)
+
+Coming soon...
+
+## Detecting regime shifts: Macquarie (AUS)
+
+Coming soon...
+
+## Prioritizing habitat management: Española (ECU)
 
 Coming soon...

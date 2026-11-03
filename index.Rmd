@@ -1,6 +1,5 @@
---- 
-title: "Island Vital Signs: 
-Turning satellite observations into actionable insights"
+---
+title: "Island Vital Signs: Turning Earth Observations into Actionable Insights"
 short_title: "Island Vital Signs"
 author: "Mikayla Call (Hobart and William Smith Colleges), Elke Windschitl (Island Conservation), Brad Cosentino (Hobart and William Smith Colleges), Christy Wails (South Dakota State University), and David Will (Island Conservation)"
 date: "`r Sys.Date()`"
@@ -8,38 +7,37 @@ site: bookdown::bookdown_site
 ---
 
 # Preface { - }
-Island Vital Signs is a tool that turns remotely sensed data into actionable insights that can contribute to conservation and restoration efforts on islands around the world. The purpose of this book is to provide an overview of the Island Vital Signs project and its methods, explain how to access data and use the Island Vital Signs online app to visualize results, and describe several use case studies that demonstrate real-world applications of the Island Vital Signs data in conservation decision-making. 
 
+Welcome to the [*Island Vital Signs*](https://islandconservation-island-vital-signs.share.connect.posit.cloud/) user manual. This book provides an overview of the *Island Vital Signs* project and tutorials on how to use project data. Land managers, conservation practitioners, spatial analysts, and researchers may all find this book useful for learning about the data and potential applications. You may use the menu on the left side to navigate the book and access different sections.
 
-```{r echo=FALSE, label="Floreana-image", out.width='100%', fig.cap='Floreana Island, Galápagos, Ecuador (Tommy Hall/Island Conservation).'}
-knitr::include_graphics("images/Floreana.jpg")
+In Chapter \@ref(introduction), we provide context for the *Island Vital Signs* project, including why remote sensing data is useful for monitoring island ecosystems.
 
+In Chapter \@ref(methods), we provide an overview of the analytical workflow (Section \@ref(analytical-workflow)), background on the Landsat data used within the project (Section \@ref(landsat-and-earth-observation-eo-data)), definitions of the vegetation metrics quantified by *Island Vital Signs* models (Section \@ref(remotely-sensed-vegetation-metrics)), descriptions of the data products produced by *Island Vital Signs* models (Sections \@ref(model-predicted-vegetation-values) and \@ref(model-predicted-vegetation-trends)), and details for all islands that are currently available in the *Island Vital Signs* dataset. For analysts and researchers wishing to learn more about model structure and implementation, we also provide information on data processing (Section \@ref(processing-remote-sensing-data-products)) and time series analysis (Section \@ref(time-series-analysis)).
+
+In Chapter \@ref(application-walkthrough), we provide a tutorial on how to use the online application for *Island Vital Signs*, including how to access data through the application's modules, visualize spatial and temporal trends, and download data to use outside of the application.
+
+Finally, in Chapter \@ref(use-case-studies) we introduce several use case studies that serve as example real-world applications for *Island Vital Signs* data. The chapter opens with an overview of all case studies, and each section that follows describes the analytical workflow for one case study. These workflows are repeatable so that they can be used with data from other islands. In each case study (except Savana), we describe a beginner-friendly workflow for visualizing the data within the *Island Vital Signs* application. For users with technical expertise in QGIS and/or R, we also provide repeatable workflows for analyzing the data within those applications as well.
+
+```{r echo=FALSE, label="floreana-image", out.width='100%', fig.cap='An aerial photo showing the vegetation community on Floreana Island, Galápagos, Ecuador (Photo by Tommy Hall/Island Conservation).'}
+knitr::include_graphics("images/figure0.1_floreana.jpg")
 ```
 
+## Acknowledgments { - }
 
-## Acknowledgements
-The Island Vital Signs project was funded by Salesforce Nature Accelerator and NASA Biological Diversity and Ecological Conservation award 80NSSC23K1539. 
+The *Island Vital Signs* project is funded by Salesforce Nature Accelerator and NASA Biological Diversity and Ecological Conservation award 80NSSC23K1539. The *Island Vital Signs* project team includes members from Island Conservation (Santa Cruz, California), Hobart and William Smith Colleges (Geneva, New York), South Dakota State University (Brookings, South Dakota), State University of New York College of Environmental Science and Forestry (Syracuse, New York), terraPulse Inc. (Gaithersburg, Maryland), and George Washington University (Washington D.C.). The *Island Vital Signs* online application is a product of Island Conservation. All outputs presented in *Island Vital Signs* data are the result of models and analyses developed by team members from Hobart and William Smith Colleges and South Dakota State University, with intellectual support from team members from Island Conservation and State University of New York College of Environmental Science and Forestry, and using remotely sensed data products produced by terraPulse Inc. Thank you to Lara Brenner, Marci Brimhall, Nancy Brunbury, April Burt, Paula A. Castaño, Annabelle Constance, Cielo Figuerola, Katie Franklin, Doug Gillings, Nick Holmes, Paul Jacques, John Knapp, Stefan Kropidlowski, Amy Levine, Annie Little, Sierra Moore, Cozette Romero, Alex Wegmann, Cameron Williams, and Coral Wolf for providing feedback with regards to the framework design and application outputs, and assisting with model validation.
 
-The Island Vital Signs project team includes members from Island Conservation (Santa Cruz, California), Hobart and William Smith Colleges (Geneva, New York), South Dakota State University (Brookings, South Dakota), State University of New York College of Environmental Science and Forestry (Syracuse, New York), terraPulse (Gaithersburg, Maryland), and George Washington University (Washington D.C.). 
+## Project Team { - }
 
-All outputs presented in Island Vital Signs data are the result of models developed by team members from Hobart and William Smith Colleges and South Dakota State University using remotely sensed data products produced by terraPulse Inc. 
+If you have questions about the *Island Vital Signs* project, you may reach out to the following project members:
 
-Thank you to Lara Brenner, Paula A. Castaño, Cielo Figuerola, Katie Franklin, Nick Holmes, Paul Jacques, John Knapp, Stefan Kropidlowski, Amy Levine, Annie Little, Cozette Romero, Alex Wegmann, Cameron Williams, and Coral Wolf for providing early feedback with regards to the framework design and assisting with model validation. 
++ David Will (Island Conservation), Project PI – david.will@islandconservation.org
++ Elke Windschitl (Island Conservation), App Development – elke.windschitl@islandconservation.org
++ Dr. Christy Wails (South Dakota State University), Model Development – christy.wails@sdstate.edu
++ Dr. Bradley Cosentino (Hobart and William Smith College), Model Development – cosentino@hws.edu
++ Dr. Mikayla Call (Hobart and William Smith Colleges), End User Support – call@hws.edu
 
+For inquiries about the remote sensing data products used in this project, please contact Dr. Joseph Sexton (terraPulse Inc.) at sexton@terrapulse.com or visit [terrapulse.com](https://terrapulse.com/)
 
-```{r echo=FALSE, label="contirbutor-logos", out.width='100%'}
-knitr::include_graphics("images/logos.jpg")
-
+```{r echo=FALSE, label="contributor-logos", out.width='100%'}
+knitr::include_graphics("images/figure0.2_logos.jpg")
 ```
-
-
-## Contacts
-If you have questions about the Island Vital Signs project, please contact the following project team members:
-
-+ David Will, Project PI – david.will@islandconservation.org
-+ Elke Windschitl, App Development – elke.windschitl@islandconservation.org
-+ Dr. Christy Wails, Model Development – christy.wails@sdstate.edu
-+ Dr. Bradley Cosentino, Model Development – cosentino@hws.edu
-+ Dr. Mikayla Call, End User Support – call@hws.edu
-
-For inquiries about the remote sensing data products used in this project, please contact Dr. Joseph Sextin at sexton@terrapulse.com or visit terraPulse, Inc.'s website at https://terrapulse.com/

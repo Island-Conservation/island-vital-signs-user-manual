@@ -2,9 +2,9 @@ book_filename: "islandvitalsigns"
 output_dir: docs
 delete_merged_file: true
 rmd_files: ["index.Rmd", "01-introduction.Rmd", "02-methods.Rmd", "03-application.Rmd",
-"04-case-studies.Rmd", "05-Mona.Rmd", "06-Pinzon.Rmd", "07-SantaCruz.Rmd"]
-edit: https://github.com/Island-Conservation/island-vital-signs-bookdown/edit/main/%s
-view: https://github.com/Island-Conservation/island-vital-signs-bookdown/blob/main/%s
+"04-case-studies.Rmd"]
+edit: https://github.com/Island-Conservation/island-vital-signs-user-manual/edit/main/%s
+view: https://github.com/Island-Conservation/island-vital-signs-user-manual/blob/main/%s
 language:
   ui:
     chapter_name: "Chapter "

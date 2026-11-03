@@ -3,3 +3,9 @@
 .Rproj.user
 *.Rproj
 _bookdown_files/
+
+# Rendered book - built and deployed by .github/workflows/publish.yml
+docs/
+
+# Source material staged for drafting (Word drafts, figures, tables) - not part of the book
+claude-resources/
