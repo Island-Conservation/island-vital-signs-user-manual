@@ -1,7 +1,7 @@
 ---
 title: "Island Vital Signs: Turning Earth Observations into Actionable Insights"
 short_title: "Island Vital Signs"
-author: "Mikayla Call (Hobart and William Smith Colleges), Elke Windschitl (Island Conservation), Brad Cosentino (Hobart and William Smith Colleges), Christy Wails (South Dakota State University), and David Will (Island Conservation)"
+author: "Mikayla Call (Hobart and William Smith Colleges), Elke Windschitl (Island Conservation), Brad Cosentino (Hobart and William Smith Colleges), Christy Wails (South Dakota State University), David Will (Island Conservation), Joseph Sexton (terraPulse Inc.)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
@@ -35,8 +35,8 @@ If you have questions about the *Island Vital Signs* project, you may reach out 
 + Dr. Christy Wails (South Dakota State University), Model Development – christy.wails@sdstate.edu
 + Dr. Bradley Cosentino (Hobart and William Smith College), Model Development – cosentino@hws.edu
 + Dr. Mikayla Call (Hobart and William Smith Colleges), End User Support – call@hws.edu
-
-For inquiries about the remote sensing data products used in this project, please contact Dr. Joseph Sexton (terraPulse Inc.) at sexton@terrapulse.com or visit [terrapulse.com](https://terrapulse.com/)
++ Dr. Joseph Sexton (terraPulse Inc.), Data Production - sexton@terrapulse.com or visit [terrapulse.com](https://terrapulse.com/)
++ Dr. Panshi Wang (terraPulse Inc.), Data Production - wang@terrapulse.com
 
 ```{r echo=FALSE, label="contributor-logos", out.width='100%'}
 knitr::include_graphics("images/figure0.2_logos.jpg")
