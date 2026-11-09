@@ -1,5 +1,4 @@
 Name,Country,Area (sq km),Full time series,Metrics,Modeled eradications,Global ecological zone (FAO),Biome,Realm,Ecoregion
-Aldabra,Republic of Seychelles,,,,None,Tropical moist deciduous forest,Deserts and xeric shrublands,Afrotropic,Aldabra Island xeric scrub
 Alofi,Wallis and Futuna,17.41,2000-2024 (tree cover 2014-2024 only),"TCC, EVI, NDMI",None,Tropical rainforest,Tropical and subtropical moist broadleaf forests,Oceania,Fiji tropical moist forests
 Alto Velo,Dominican Republic,0.88,1985-2024 (tree cover 1987-2024 only),"TCC, EVI, MSAVI2, NDMI",None,Tropical moist deciduous forest,Tropical and subtropical dry broadleaf forests,Neotropic,Hispanolan dry forests
 Amsterdam,French Southern Territories,57.84,2010-2024 (tree cover 2011-2024 only),"TCC, NDVI, NDMI","Cattle (Bos taurus), 2010",Polar,"Temperate grasslands, savannas, and shrublands",Afrotropic,Amsterdam-Saint Paul islands temperate grasslands
@@ -27,7 +26,7 @@ Grande Terre (Aldabra atoll),Republic of Seychelles,114.06,1995-2024,"TCC, EVI, 
 Great Mercury,New Zealand,19.98,1990-2024 (tree cover 2000-2024 only),"TCC, NDVI, NDMI","Polynesian rat (Rattus exulans), black rat (Rattus rattus), and cat (Felis catus), 2015",Subtropical humid forest,Temperature broadleaf and mixed forests,Australasia,Northland temperate kauri forests
 Guadalupe,Mexico,246.24,1993-2024 (tree cover 2014-2024 only),"TCC, MSAVI2, NDMI","Dog (Canis familiaris), 2007",Subtropical mountain system,"Mediterranean forests, woodlands, and scrub",Nearctic,California coastal sage and chaparral
 Hawadax,United States,27.22,2000-2024,"NDVI, NDMI","Norway rat (Rattus norvegicus), 2008",Polar,Tundra,Nearctic,Aleutian Islands tundra
-Henderson,Pitcairn Islands,Tropical rainforest,Tropical and subtropical moist broadleaf forests,Oceania,Tuamotu tropical moist forests,,,,
+Henderson,Pitcairn Islands,37.3,2000-2025,"TCC, EVI, NDMI",None,Tropical rainforest,Tropical and subtropical moist broadleaf forest,Oceania,Tuamotu tropical moist forests
 Jemo,Republic of Marshall Islands,0.15,2001-2024 (tree cover 2014-2024 only),"TCC, EVI, NDMI",None,Tropical rainforest,Tropical and subtropical moist broadleaf forest,Oceania,Eastern Micronesia tropical moist forests
 Kaho'olawe,United States,115.04,2000-2024,"TCC, MSAVI2, NDMI","Goat (Capra hircus), 1992",Tropical mountain system,"Tropical and subtropical grasslands, savannas, and shrublands; tropical and subtropical dry broadleaf forests",Oceania,Hawai'i tropical low shrublands; Hawai'i tropical dry forests
 Kamaka,French Polynesia,0.52,2000-2025,"TCC, EVI, NDMI",None,Tropical rainforest,Tropical and subtropical moist broadleaf forest,Oceania,Tuamotu tropical moist forests
@@ -72,7 +71,7 @@ Teti'aroa,French Polynesia,5.06,2000-2024,"TCC, MSAVI2, NDMI","Rodent sp. (Rattu
 Tintamarre,Saint Martin,1.18,1985-2025 (tree cover 2000-2025 only),"TCC, MSAVI2, NDMI",None,Tropical dry forest,Deserts and xeric shrublands,Neotropic,Caribbean shrublands
 Tofua,Tonga,53.34,2000-2024 (tree cover 2014-2024 only),"TCC, MSAVI2, NDMI",None,Tropical rainforest,Tropical and subtropical moist broadleaf forests,Oceania,Tongan tropical moist forests
 Trindade,Brazil,8.21,2000-2024,"MSAVI2, NDMI","Goat (Capra hircus), 2005",Tropical moist deciduous forest,Tropical and subtropical moist broadleaf forests,Neotropic,Trindade-Martin Vaz Islands tropical forests
-Tromelin,French Southern Territories,0.88,2005-2024,"EVI, NDMI","Norway rat (Rattus norvegicus), 2005",Tropical moist deciduous forest,.,Afrotropic,.
+Tromelin,French Southern Territories,0.88,2005-2024,"EVI, NDMI","Norway rat (Rattus norvegicus), 2005",Tropical moist deciduous forest,Tropical and subtropical moist broadleaf forests,Afrotropic,Mascarene forest
 Ulong,Palau,1.13,2000-2024 (tree cover 2012-2024 only),"TCC, EVI, NDMI",None,Tropical rainforest,Tropical and subtropical moist broadleaf forests,Oceania,Palau tropical moist forests
 Vahanga,French Polynesia,3.86,2000-2025 (tree cover 2015-2025 only),"TCC, EVI, NDMI","Polynesian rat (Rattus exulans), 2015",Tropical rainforest,Tropical and subtropical moist broadleaf forests,Oceania,Tuamotu tropical moist forests
 Zembra,Tunisia,4.47,1985-2025,"TCC, MSAVI2, NDMI",None,Subtropical dry forest,"Mediterranean forests, woodlands, and scrub",Palearctic,Mediterranean woodlands and forests

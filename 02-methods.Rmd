@@ -11,7 +11,7 @@ library(kableExtra)
 knitr::include_graphics("images/figure2.1.1_workflow.jpg")
 ```
 
-*Island Vital Signs* uses time series analysis to measure how vegetation has changed across an island and over time. We track change in vegetation structure and function using mean annual observations of vegetation metrics that are derived from satellite data. These data are collected within a 30 m grid, with each pixel within the grid representing a 30 m^2^ (0.09 ha) area on the ground. We use simple and interrupted time series models to analyze how the data for each pixel changes over time, allowing us to examine patterns and trends in the vegetation data *over time*, and track *where* change is occurring. Across the next few sections, we describe in more detail the different parts of this analytical framework and how we turn satellite data into actionable insights for island ecosystem conservation and restoration.
+*Island Vital Signs* uses time series analysis to measure how vegetation has changed across an island and over time. We track change in vegetation structure and function using mean annual observations of vegetation metrics that are derived from satellite data. These data are collected within a 30 m grid, with each pixel representing a 30 m x 30 m (0.09 ha) area on the ground. We use simple and interrupted time series models to analyze how the data for each pixel changes over time, allowing us to examine patterns and trends in the vegetation data *over time*, and track *where* change is occurring. Across the next few sections, we describe in more detail the different parts of this analytical framework and how we turn satellite data into actionable insights for island ecosystem conservation and restoration.
 
 ## Landsat and Earth Observation (EO) Data
 
@@ -47,7 +47,7 @@ NDMI values range from -1 to 1, though negative values typically indicate barren
 knitr::include_graphics("images/figure2.3.2_Padre.jpg")
 ```
 
-**Normalized Difference Vegetation Index:** The Normalized Difference Vegetation Index (NDVI) quantifies plant greenness by measuring the ratio between NIR and red light reflectance from the Earth's surface ([Rouse et al. 1974](https://ntrs.nasa.gov/citations/19740022614)).
+**Normalized Difference Vegetation Index:** The Normalized Difference Vegetation Index (NDVI) quantifies plant greenness by measuring the ratio between NIR and red light reflectance from the Earth's surface ([Rouse et al. 1974](https://ntrs.nasa.gov/api/citations/19740022614/downloads/19740022614.pdf)).
 
 $$NDVI = \frac{(NIR - Red)}{(NIR + Red)}$$
 
@@ -65,7 +65,7 @@ knitr::include_graphics("images/figure2.3.3_Anangusook.jpg")
 
 ## Processing remote sensing data products
 
-We generate time series for canopy cover, vegetation moisture, and productivity from Landsat Collection 2 Level-2 surface reflectance data, which are available at a 30 m spatial resolution. This means that each pixel within the raster datasets represents a 30 m x 30 m area on the ground. Prior to processing the data, we exclude Landsat scenes that have ≥ 70% cloud cover. From the remaining scenes, we remove cloud and shadow contamination by applying a mask derived from the auxiliary pixel quality assessment band. We then scale pixel values to percent reflectance using Landsat metadata.
+We generate time series for tree canopy cover, vegetation moisture, and productivity from Landsat Collection 2 Level-2 surface reflectance data, which are available at a 30 m spatial resolution. This means that each pixel within the raster datasets represents a 30 m x 30 m area on the ground. Prior to processing the data, we exclude Landsat scenes that have ≥ 70% cloud cover. From the remaining scenes, we remove cloud and shadow contamination by applying a mask derived from the auxiliary pixel quality assessment band. We then scale pixel values to percent reflectance using Landsat metadata.
 
 For each island within the dataset, we crop the Landsat scenes to the spatial extent of the island. We then remove all cells that are within 30 m of the island boundary to produce a final set of rasters that are slightly smaller than the full extent of the island boundary. We do this to reduce any potential error caused by year-to-year shifts in the position of the coastline as a result of erosion or accretion.
 
@@ -73,7 +73,7 @@ When possible, we analyze raster time-series using the native 30 m resolution. H
 
 ## Time series analysis
 
-We analyze vegetation change on each island within the dataset using a set of 30 m resolution rasters, where each raster represents a year within the time-series and each pixel contains a value for tree canopy cover, vegetation moisture, and productivity. We use raster time-series spanning 1984 to approximately present (as of 2026, most time series ended in 2024 or 2025). However, data may not be available for all years in that period for all islands (for example, due to cloud or shadow contamination), so the length of each individual island time-series varies.
+We analyze vegetation change on each island within the dataset using a set of rasters, where each raster represents a year within the time-series and each pixel contains a value for tree canopy cover, vegetation moisture, and productivity. We use raster time-series spanning 1984 to approximately present (as of 2026, most time series ended in 2024 or 2025). However, data may not be available for all years in that period for all islands (for example, due to cloud or shadow contamination), so the length of each individual island time-series varies.
 
 Time series analysis uses long-term datasets to examine how values change over time, providing the opportunity to detect trends, visualize patterns, and identify anomalies in the data. In *Island Vital Signs*, we use time series analysis to assess annual change in the remotely sensed indices for tree canopy cover, vegetation moisture, and productivity over time, as well as estimate long-term temporal trends for each vegetation metric. We analyze the time series data by fitting Bayesian hierarchical models for each vegetation metric using the R package [*brms*](https://cran.r-project.org/web/packages/brms/index.html) with [Stan](https://mc-stan.org/about/). Each of the models included: (1) a random intercept for time, which allows for variation in initial vegetation conditions, and (2) a pixel-specific random slope for time (and time since intervention, if applicable) to allow vegetation trends to vary spatially across an island.
 
@@ -91,7 +91,7 @@ where $\alpha$ is an island-level intercept, $\beta_{1}$ represents the overall 
 
 In v1.0.0 of the models, we fit models for tree canopy cover and productivity with a Beta error distribution with a logit link function and address temporal dependence among repeated observations within each pixel using a lagged response that uses the value of each vegetation metric from the previous year. We fit models for vegetation moisture with a truncated Gaussian distribution and address temporal autocorrelation using a first-order autoregressive process.
 
-In v2.0.0 of the models, we scale NDMI to the same range as tree canopy cover, NDVI, EVI, and MSAVI1 (i.e., 0–1) and then analyze vegetation moisture using the same modeling approach as tree canopy cover and productivity. For visualization and interpretation, we rescale NDMI back to its appropriate value. We do not find that this method significantly alters results. This model version produces modeling outputs that are marginally more comparable across vegetation metrics. Additionally, it improves the vegetation moisture model so that it requires fewer computational resources.
+In v2.0.0 of the models, we scale NDMI to the same range as tree canopy cover, NDVI, EVI, and MSAVI2 (i.e., 0–1) and then analyze vegetation moisture using the same modeling approach as tree canopy cover and productivity. For visualization and interpretation, we rescale NDMI back to its appropriate value. We do not find that this method significantly alters results. This model version produces modeling outputs that are marginally more comparable across vegetation metrics. Additionally, it improves the vegetation moisture model so that it requires fewer computational resources.
 
 For more details about model structure and model implementation procedures, including the priors selected for each model parameter, please see [Wails et al. 2026](https://www.researchsquare.com/article/rs-10554051/v1).
 
@@ -101,14 +101,14 @@ The models for *Island Vital Signs* estimate vegetation metric values for all pi
 
 (1) A smooth trend that reflects expected long-term vegetation trend. This is generated by including pixel-level random intercepts and temporal slopes but excluding the year-level random intercept.
 
-```{r echo=FALSE, label="macquarie-ndvi-smooth", out.width='50%', fig.align='center', fig.cap='Example predicted smoothed NDVI trend for a pixel (158.9102, -54.5398) on Macquarie Island, Australia. The black points represent raw NDVI observations. The line represents the smoothed model-predicted trend for 2000–2023. The grey shaded area represents the 85% highest posterior density interval, i.e., the area in which the true trend is at least 85% likely to occur.'}
-knitr::include_graphics("images/figure2.6.1_macquarie_ndvi_smooth.png")
+```{r echo=FALSE, label="tenarunga-evi-smooth", out.width='50%', fig.align='center', fig.cap='Example predicted smoothed EVI trend for a pixel on Tenarunga Atoll, Tuamotu-Gambier, French Polynesia. The black points represent raw EVI observations. The line represents the smoothed model-predicted trend for 2000–2025. The grey shaded area represents the 85% highest posterior density interval, i.e., the area in which the true trend is at least 85% likely to occur.'}
+knitr::include_graphics("images/figure2.6.1_tenarunga_evi_smooth.png")
 ```
 
 (2) A trend that allows for interannual variability. This is generated by including the year-level random intercept.
 
-```{r echo=FALSE, label="macquarie-ndvi-variability", out.width='50%', fig.align='center', fig.cap='Example predicted NDVI trend with interannual variability for a pixel (158.9102, -54.5398) on Macquarie Island, Australia. The black points represent raw NDVI observations. The line represents the model-predicted trend for 2000–2023. The grey shaded area represents the 85% highest posterior density interval, i.e., the area in which the true trend is at least 85% likely to occur.'}
-knitr::include_graphics("images/figure2.6.2_macquarie_ndvi_variability.png")
+```{r echo=FALSE, label="tenarunga-evi-variability", out.width='50%', fig.align='center', fig.cap='Example predicted EVI trend with interannual variability for a pixel on Tenarunga Atoll, Tuamotu-Gambier, French Polynesia. The black points represent raw EVI observations. The line represents the model-predicted trend for 2000–2025. The grey shaded area represents the 85% highest posterior density interval, i.e., the area in which the true trend is at least 85% likely to occur.'}
+knitr::include_graphics("images/figure2.6.2_tenarunga_evi_variability.png")
 ```
 
 ## Model predicted vegetation trends
